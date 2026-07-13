@@ -1,0 +1,74 @@
+package task11;
+
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class taskeleven {
+    public static void main(String[] args) throws InterruptedException {
+        //Launch the Chrome browser.
+        ChromeDriver driver = new ChromeDriver();
+        // Maximize the browser window.
+        driver.manage().window().maximize();
+        //Open the ActiTime application.
+        driver.get("https://www.actitime.com/");
+        // Verify and print the page title.
+        String actiTitle = driver.getTitle();
+        System.out.println("ActiTime Page Title: " + actiTitle);
+
+        if (actiTitle.contains("actiTIME")) {
+            System.out.println("Title Verified");
+        }
+        else {
+            System.out.println("Title Not Verified");
+
+           // Verify and print the current URL
+            String actiURL = driver.getCurrentUrl();
+            System.out.println("Current URL: " + actiURL);
+
+            //Resize the browser window to 1000 x 700
+             Dimension s = new Dimension(1000, 700);
+             driver.manage().window().setSize(s);
+             Thread.sleep(2000);
+
+           // Move the browser window to position (200,100)
+            Point p = new Point(200, 100);
+            driver.manage().window().setPosition(p);
+            Thread.sleep(2000);
+
+            //Navigate to Google website
+            driver.navigate().to("https://www.google.com");
+
+           // Verify and print the Google page title
+               String googleTitle = driver.getTitle();
+               System.out.println("Google Page Title: " + googleTitle);            //
+               if (googleTitle.equals("Google")) {
+               System.out.println("Google Title Verified");
+               }
+               else
+               {
+                 System.out.println("Google Title Not Verified");
+               }
+              Thread.sleep(2000);
+
+               //Navigate back to ActiTime
+                driver.navigate().back();
+                Thread.sleep(2000);
+
+            // Refresh the current page
+            driver.navigate().refresh();
+            Thread.sleep(2000);
+
+            //Navigate forward to Google
+            driver.navigate().forward();
+            Thread.sleep(2000);
+
+            //Minimize the browser window
+            driver.manage().window().minimize();
+            Thread.sleep(2000);
+
+            // Close all browser windows
+            driver.quit();
+        }
+    }
+}
