@@ -14,7 +14,6 @@ public class findElement2 {
         driver.get("https://online.actitime.com/cskltd/forgot.do");
 
         //verify login
-        String Title = "actiTIME Login";
         String actualTitle = driver.getTitle();
         if (actualTitle.contains("actiTIME"))
         {
@@ -41,7 +40,7 @@ public class findElement2 {
         //verify login operation
         String currentUrl = driver.getCurrentUrl();
 
-        if (currentUrl.contains("https://online.actitime.com/cskltd/timetrack/enter.do"))
+        if (currentUrl.contains("timetrack/enter.do"))
         {
             System.out.println("Login Successful");
         } else {
